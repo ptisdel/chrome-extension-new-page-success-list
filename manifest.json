@@ -1,0 +1,10 @@
+{
+  "name": "What Would Success Look Like Today",
+  "version": "0.1",
+  "description": "Write out your daily goals.",
+  "chrome_url_overrides" : {
+    "newtab": "myPage.html"
+  },
+
+  "manifest_version": 2
+}

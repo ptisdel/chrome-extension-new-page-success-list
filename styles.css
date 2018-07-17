@@ -1,0 +1,158 @@
+
+* {
+    box-sizing: border-box;
+    font-family: Nunito;
+}
+
+body {
+    background: #fefefe;
+     padding: 50px 50px;
+    
+    
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 32px;
+    color: #1c7d63;
+    margin-top:0;
+}
+
+#inputs {
+    width: 500px;
+    max-width: 100%;
+    padding:0;
+    margin:0;
+}
+
+
+.field {
+    display: flex;
+    align-items:center;
+    margin-bottom: 15px;
+}
+
+.handle {
+    background-image: url(images/draggable.png);
+    width: 21px;
+    height: 16px;
+    background-size: contain;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    margin-right:5px;
+    opacity:0;
+    transition:all 0.2s;
+}
+
+.field:hover .handle {
+    opacity:0.2;
+}
+
+.handle:hover {
+    opacity: 0.4 !important;
+}
+
+
+
+input {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid transparent;
+/*    background-color: transparent;*/
+    padding: 5px;
+    font-size: 18px;
+    outline: 0;
+    transition: all 0.2s;
+    font-weight: 300;
+}
+
+input:valid {
+/*
+    background: white !important;
+    box-shadow: 1px 1px 3px gainsboro;
+*/
+}
+
+input:focus {
+    border-bottom: 1px solid #00a478 !important;
+    color: #1c7d63;
+/*    background:linear-gradient(rgba(255, 255, 255, 0) 5%, rgba(134, 223, 190, 0.1) 100%);*/
+}
+
+.field:hover input:valid ~ .complete-btn {
+    filter: blur(0px) saturate(200%) hue-rotate(35deg) brightness(80%);
+    opacity:1;
+}
+
+.field:hover input {
+    border-bottom: 1px solid #e6e6e6;    
+}
+
+.field.complete .complete-btn {
+    background-image: url(images/checkmark-hover.png);
+}
+
+.field.complete input {
+    color:#c0c0c0;
+    text-decoration: line-through;
+}
+
+.complete-btn {
+    margin-left: 20px;
+    background: url(images/checkmark.png);
+    width: 25px;
+    height: 24px;
+    border: 0;
+    outline: 0;
+    background-size: contain;
+    cursor:pointer;
+    transition:all 0.4s;
+    opacity:0;
+    filter: blur(2px) saturate(200%) hue-rotate(35deg) brightness(80%);
+}
+
+.complete-btn:hover {
+    background-image: url(images/checkmark-hover.png);
+    transition:all 0.1s;
+}
+
+#commands {
+    opacity:0;
+    padding:50px 0px;
+    transition:all 0.2s;
+}
+
+#commands:hover {
+    opacity:1;
+}
+
+#clear-all {
+    color: #1c7d63;
+    text-decoration: none;
+}
+
+#clear-all:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+
+
+
+
+@media (max-width:750px) {
+    body {
+        padding:40px 40px;
+    }
+}
+
+@media (max-width:400px) {
+    body {
+        padding: 5px 5px;
+    }
+}
