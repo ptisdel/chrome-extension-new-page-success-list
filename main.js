@@ -8,8 +8,21 @@ $(document).ready(function() {
     });
     
     $(".complete-btn").click(function() {
-       $(this).parent(".field").toggleClass("complete"); 
-        saveData();
+        
+        var parent = $(this).parent(".field");
+        
+        if (parent.hasClass("complete")) {
+            parent.children("input").val("");
+            parent.removeClass("complete");
+            saveData();
+        }
+        else
+        {
+            $(this).parent(".field").addClass("complete"); 
+            saveData();
+        }
+        
+      
     });
     
     $("#clear-all").click(function() {
@@ -29,6 +42,10 @@ $(document).ready(function() {
             return false;  
           }
     });   
+    
+    $('input').focusout(function() {
+        if ($(this).val()=="") $(this).parent(".field").removeClass("complete");
+    });
 
     function saveData() {
         var myStorage = window.localStorage;
