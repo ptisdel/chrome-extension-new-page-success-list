@@ -59,7 +59,7 @@ input {
     width: 100%;
     border: 0;
     border-bottom: 1px solid transparent;
-/*    background-color: transparent;*/
+    background-color: transparent;
     padding: 5px;
     font-size: 18px;
     outline: 0;
@@ -87,15 +87,6 @@ input:focus {
 
 .field:hover input {
     border-bottom: 1px solid #e6e6e6;    
-}
-
-.field.complete .complete-btn {
-    background-image: url(images/checkmark-hover.png);
-}
-
-.field.complete input {
-    color:#c0c0c0;
-    text-decoration: line-through;
 }
 
 .complete-btn {

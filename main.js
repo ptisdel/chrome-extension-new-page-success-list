@@ -8,27 +8,16 @@ $(document).ready(function() {
     });
     
     $(".complete-btn").click(function() {
-        
         var parent = $(this).parent(".field");
         
-        if (parent.hasClass("complete")) {
-            parent.children("input").val("");
-            parent.removeClass("complete");
-            saveData();
-        }
-        else
-        {
-            $(this).parent(".field").addClass("complete"); 
-            saveData();
-        }
-        
-      
+        parent.children("input").val("");
+        parent.appendTo("#inputs");
+        saveData();      
     });
     
     $("#clear-all").click(function() {
        $(".field").each(function(i) {   
             $(this).children("input").val("");
-            $(this).removeClass("complete");
        });
         saveData();
     });
@@ -36,53 +25,37 @@ $(document).ready(function() {
     $('input').keypress(function (e) {
          if(e.which == 13)  // the enter key code
           {
-              console.log("test");
-              $(this).blur();
+            $(this).blur();
             $(this).parent(".field").next(".field").children("input").focus();
             return false;  
           }
     });   
-    
-    $('input').focusout(function() {
-        if ($(this).val()=="") $(this).parent(".field").removeClass("complete");
-    });
 
     function saveData() {
         var myStorage = window.localStorage;
 
         $(".field").each(function(i) {                   
             localStorage.setItem('setGoals_'+i, $(this).children("input").val());
-            localStorage.setItem('setGoals_'+i+"_complete", $(this).hasClass("complete"));
-            console.log($(this).hasClass("complete"));
         });
-        
-        console.log("Saved.");
-
+        console.log("Success Data saved.");
     }
 
     function loadData() {
         $(".field").each(function(i) {                   
             $(this).children("input").val(localStorage.getItem('setGoals_'+i));
-            if (localStorage.getItem('setGoals_'+i+"_complete")=="true") {
-                $(this).addClass("complete");
-            console.log(localStorage.getItem('setGoals_'+i+"_complete"));
-            }
         });
         
-        console.log("Loaded.");
+        console.log("Success Data loaded.");
     }
     
     
     var el = document.getElementById('inputs');
     var sortable = Sortable.create(el, {
-        
         onEnd: function (/**Event*/evt) {
             saveData();
         },
         handle: ".handle",
         animation: 150
-        
-        
     });
 
 });
